@@ -30,22 +30,41 @@ const Sprite = styled.div`
 const Pokemon = styled.img`
 	z-index: 1;
 	display: flex;
-
 `
 const PokemonData = styled.div`
 	display: flex;
 	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	padding-left: 1rem;
 	flex: 1;
 	h2 {
 		font-weight: bold;
+		margin-bottom: 0.5em;
 	}
+`
+const PokemonType = styled.div`
+	background-color: ${props => props.typeColor};
+	border-radius: 40px;
+	width: 70px;
+	color: #fff;
+	font-size: 14px;
+	padding: 2px 0;
+`
+const BaseExp = styled.div`
+	font-size: 14px;
+	opacity: 0.6;
+	margin-top: 1em;
 `
 const Number = styled.div`
 	display: flex;
-	background-color: #000;
+	font-weight: 900;
+	padding: 2px 0px 2px 6px;
+	background-color: #e8e8e8;
 	align-self: flex-start;
-	width: 40px;
+	width: 50px;
 	border-top-left-radius: 7px;
+	border-bottom-right-radius: 7px;
 	z-index: 3;
 	flex-shrink: 0;
 	position: absolute;
@@ -58,9 +77,10 @@ const Pkball = styled.div`
 	position: absolute;
 	bottom: 1rem;
 	left: 1rem;
+	opacity: 0.35;
 `
 const SVG = styled.svg`
-	fill: #eaeef5;
+	fill: #ccc;
 	overflow: visible;
 	display: block;
 	g{
@@ -99,14 +119,14 @@ class Pokecard extends Component {
 		return (
 			<Card>
 				<Sprite>
-					<Number>{this.props.id}</Number>
-					<Pokeball typeColor="red" />
+					<Number>#{this.props.id}</Number>
+					<Pokeball typeColor={this.props.typeColor[0].color} />
 					<Pokemon src={imgSrc} alt={this.props.name} />
 				</Sprite>
 				<PokemonData>
 					<h2>{this.props.name}</h2>
-					<div>Type: {this.props.type}</div>
-					<div>Exp: {this.props.exp}</div>
+					<PokemonType typeColor={this.props.typeColor[0].color}>{this.props.type}</PokemonType>
+					<BaseExp>Base Exp: {this.props.exp}</BaseExp>
 				</PokemonData>
 			</Card>
 		)

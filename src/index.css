@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Heebo&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Heebo:400,700,900&display=swap');
 
 body {
   margin: 0;
@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #dfe4ed;
-  color: #212121;
+  color: #333333;
 }
 
 code {
