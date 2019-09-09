@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo:400,700,900&display=swap');
+
+body {
+  margin: 0;
+  font-family: "Heebo", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #dfe4ed;
+  color: #333333;
+}
+
+.row-container{
+  display: flex;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+.page-instructions{
+  width: 95%;
+  margin: 50px auto;
+
+}

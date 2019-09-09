@@ -1,9 +1,63 @@
 import React, { Component } from 'react';
 import Pokecard from '../Pokecard/Pokecard';
-import './Pokedex.css';
+import styled from 'styled-components';
 
 ///////-- To do's -- ///////
+
 // Find a better way to pass the type color to the PokeCard
+
+const Pokehand = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: 2rem auto;
+  margin-top: 3rem;
+  padding: 4rem 2rem;
+  border-radius: 10px;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 3px solid ${props => ((props.isWinner) ? '#2bc478' : '#eb4034')};
+`
+const Title = styled.div`
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: -1.5rem;
+  width: 200px;
+  font-size: 20px;
+  left: 50%;
+  right: 0;
+  transform: translateX(-50%);
+  background-color: #fff;
+  color: #fff;
+  overflow: hidden;
+  background-color: ${props => ((props.isWinner) ? '#2bc478' : '#eb4034')};
+  div{
+    padding: 0.5rem 0.8rem;
+  }
+  .points{
+    position: relative;
+    width: 60px;
+    ::before{
+      content:'';
+      width:80px; 
+      height:100%;
+      position:absolute;
+      top:0; 
+      right:-20px;
+      background: rgba(255, 255, 255, 0.25);
+      z-index:-1;
+      transform: skewX(-20deg);
+      transform-origin:0 0;
+      text-align: center;
+    }
+  }
+`
+const Pokecards = styled.div`
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+`
 
 const COLOR_TYPES = [
   {type: 'Bug', color: '#adbd21'},
@@ -26,26 +80,15 @@ const COLOR_TYPES = [
   {type: 'Water', color: '#399cff'},
 ]
 
-class Pokedex extends Component {
-  static defaultProps = {
-    pokemon : [
-      {id: 196, name: 'Espeon', type: 'Psychic', base_experience: 62},
-      {id: 350, name: 'Milotic', type: 'Water', base_experience: 63},
-      {id: 445, name: 'Garchomp', type: 'Ground', base_experience: 72},
-      {id: 282, name: 'Gardevoir', type: 'Psychic', base_experience: 178},
-      {id: 407, name: 'Roserade', type: 'Grass', base_experience: 112},
-      {id: 470, name: 'Leafeon', type: 'Grass', base_experience: 95},
-      {id: 478, name: 'Froslass', type: 'Ice', base_experience: 225},
-      {id: 637, name: 'Volcarona', type: 'Bug', base_experience: 65}
-    ]
-  };
-
+class PokeHand extends Component {
   render() {
     return (
-      <div className="Pokedex">
-        <h1>Pokedex!</h1>
-
-        <div className="Pokedex-cards">
+      <Pokehand isWinner={this.props.isWinner}>
+        <Title isWinner={this.props.isWinner}>  
+          <div>{this.props.isWinner ? 'You win!' : 'You lose!'}</div>
+          <div className="points">{this.props.exp}</div>
+        </Title>
+        <Pokecards>
           {this.props.pokemon.map((pokemon) => (
             <Pokecard 
               key={pokemon.id}
@@ -56,10 +99,10 @@ class Pokedex extends Component {
               typeColor={COLOR_TYPES.filter(type => (type.type === pokemon.type))}
             />
           ))}
-        </div>
-      </div>
+        </Pokecards>
+      </Pokehand>
     )
   }
 }
 
-export default Pokedex;
+export default PokeHand;

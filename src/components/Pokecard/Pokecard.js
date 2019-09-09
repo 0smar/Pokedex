@@ -15,8 +15,14 @@ const Card = styled.div`
 	background-color: #fff;
 	width: 300px;
 	height: 150px;
-	margin-bottom: 1rem;
+	margin: 0 auto;
 	cursor: pointer;
+	box-shadow: 0 1px 6px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.15);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+	:hover{
+		transform: translateY(-6px);
+		box-shadow: 0 5px 10px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.075);
+	}
 `
 const Sprite = styled.div`
 	display: flex;
@@ -50,6 +56,7 @@ const PokemonType = styled.div`
 	color: #fff;
 	font-size: 14px;
 	padding: 2px 0;
+	text-align: center;
 `
 const BaseExp = styled.div`
 	font-size: 14px;
