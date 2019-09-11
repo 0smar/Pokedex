@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Pokedex from './Pokedex/Pokedex';
+import Pokedex from './Pokedex';
 import SectionTitle from './SectionTitle';
 
 class Pokegame extends Component {
@@ -34,8 +34,8 @@ class Pokegame extends Component {
         <SectionTitle title="Pokegame" color="#000" />
         <p className="page-instructions">Reload the page to get a new set of Pokemon and see who wins.  </p>
         <div className="column-container">
-          <Pokedex pokemon={hand1} exp={exp1} isWinner={exp1 > exp2} />
-          <Pokedex pokemon={hand2} exp={exp2} isWinner={exp2 > exp1} />
+          <Pokedex pokemonList={hand1} exp={exp1} isWinner={exp1 > exp2} />
+          <Pokedex pokemonList={hand2} exp={exp2} isWinner={exp2 > exp1} />
         </div>
       </div>
     )

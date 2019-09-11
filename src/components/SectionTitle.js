@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Section = styled.div`
-  background-color: ${props => props.color};
+  background-color: ${(props) => props.color};
   transform: skewX(-20deg);
   padding: 0.5rem 2rem;
   display: flex;
@@ -16,14 +16,17 @@ const Section = styled.div`
     font-size: 1.2rem;
     transform: skewX(20deg);
   }
-`
+`;
 
-const SectionTitle = (props) => (
-  <div className="row-container">
-    <Section color={props.color}>
-      <span>{props.title}</span>
-    </Section>
-  </div>
-);
+const SectionTitle = (props) => {
+  const { title, color } = props;
+  return (
+    <div className="row-container">
+      <Section color={color}>
+        <span>{title}</span>
+      </Section>
+    </div>
+  );
+};
 
 export default SectionTitle;
