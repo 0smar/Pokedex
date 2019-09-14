@@ -119,7 +119,7 @@ const Pokeball = (props) => (
 );
 
 // const POKE_SPRITE_API = 'https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/';
-const POKE_SPRITE_API = 'http://www.pokestadium.com/sprites/xy/';
+const POKE_SPRITE_API = 'https://projectpokemon.org/images/normal-sprite/';
 
 // let padToThree = (number) => (number <= 999 ? `00${number}`.slice(-3) : number);
 

@@ -58,3 +58,61 @@ body {
     margin-top: 2rem;
   }
 }
+
+.pokedice{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  button{
+    width: 300px;
+    margin: 0 auto;
+    padding: 0.5rem;
+    border-radius: 40px;
+    border: none;
+    color: #fff;
+    outline: none;
+    background-color: #4287f5;
+    margin-top: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover{
+      background-color: #2f77eb;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.075);
+    }
+  }
+}
+
+.dice-rolling{
+  animation-name: wobble;
+  animation-duration: 1s;
+}
+
+@keyframes wobble {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  15% {
+    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+  }
+
+  30% {
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+  }
+
+  45% {
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+  }
+
+  60% {
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+  }
+
+  75% {
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
