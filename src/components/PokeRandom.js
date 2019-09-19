@@ -8,7 +8,7 @@ const COLOR_TYPES = [
   { type: 'Dragon', color: '#4a3994' },
   { type: 'Electric', color: '#ffc631' },
   { type: 'Fairy', color: '#f7b5f7' },
-  { type: 'Fight', color: '#a55239' },
+  { type: 'Fighting', color: '#a55239' },
   { type: 'Fire', color: '#f75231' },
   { type: 'Flying', color: '#adbbf8' },
   { type: 'Ghost', color: '#6363b5' },
