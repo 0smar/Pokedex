@@ -11,8 +11,6 @@ const DiceBox = styled.div`
   width: 100%;
 `;
 
-const POKETYPES_API = 'https://pokemongo.fandom.com/wiki/Types?file='; // .png files
-
 class PokeDice extends Component {
   static defaultProps = {
     sides: ['one', 'two', 'three', 'four', 'five', 'six'],
@@ -35,7 +33,7 @@ class PokeDice extends Component {
       { id: 16, type: 'Rock' },
       { id: 17, type: 'Steel' },
       { id: 18, type: 'Water' },
-    ]
+    ],
   }
 
   constructor(props) {
@@ -45,7 +43,8 @@ class PokeDice extends Component {
       die2: 'one',
       die3: 'one',
       diceTotal: 0,
-      isRolling: false
+      isRolling: false,
+      selectedType: ''
     };
     this.rollDice = this.rollDice.bind(this);
   }
@@ -54,6 +53,9 @@ class PokeDice extends Component {
     const value1 = Math.floor(Math.random() * this.props.sides.length);
     const value2 = Math.floor(Math.random() * this.props.sides.length);
     const value3 = Math.floor(Math.random() * this.props.sides.length);
+    const diceTotal = value1 + value2 + value3 + 3;
+
+    const selectedType = this.props.pokemonTypes.filter(type => type.id === diceTotal)[0].type;
 
     const die1 = this.props.sides[value1];
     const die2 = this.props.sides[value2];
@@ -62,14 +64,19 @@ class PokeDice extends Component {
     this.setState({ isRolling: true })
 
     setTimeout(() => {
-      this.setState({ isRolling: false });
-      this.setState({ die1, die2, die3, diceTotal: value1 + value2 + value3 + 3 });
+      this.setState({ 
+        isRolling: false,
+        die1,
+        die2,
+        die3,
+        diceTotal,
+        selectedType
+      });
     }, 1000);
-
   }
 
   render() {
-    const { die1, die2, die3, isRolling, diceTotal } = this.state;
+    const { die1, die2, die3, isRolling, selectedType } = this.state;
     return (
       <div className="pokedice">
         <SectionTitle title="PokeDice" color="#000" />
@@ -87,7 +94,7 @@ class PokeDice extends Component {
             </button>
           </div>
           <div className="column-container type-card">
-            <Poketype typeNumber={diceTotal} />
+            <Poketype type={selectedType}  />
           </div>
         </div>
       </div>
